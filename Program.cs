@@ -7,8 +7,35 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<legoDatabaseContext>(options =>
+builder.Services.Configure<IdentityOptions>(options =>
 {
-    options.UseSqlite(builder.Configuration["ConnectionStrings:legoConnection"]);
+    // Default Password settings.
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequiredLength = 14;
+    options.Password.RequiredUniqueChars = 1;
+});
+
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.CheckConsentNeeded = context => true;
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+});
+
+builder.Services.AddDbContext<legoDatabaseContext>(options =>
+{
+    options.UseSqlite(builder.Configuration["ConnectionStrings:IntexConnection"]);
+});
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<IdentityDataContext>();
+
+builder.Services.AddScoped<ILegoRepository, EfLegoRepository>(); 
+
+builder.Services.AddDbContext<legoDatabaseContext>(options =>
+{
+    options.UseSqlite(builder.Configuration["ConnectionStrings:IntexConnection"]);
 });
 
 builder.Services.AddScoped<ILegoRepository, EfLegoRepository>(); 

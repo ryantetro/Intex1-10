@@ -1,4 +1,4 @@
-
+@model IQueryable<Product>
 
 @{
     Layout = null;
@@ -12,8 +12,7 @@
 </head>
 <body>
 <div>
-    @model IQueryable<Product>
-    
+
         @foreach (Product p in Model)
         {
             <ul>
