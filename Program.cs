@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 
+using Intex1_10.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -22,6 +25,13 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
     options.MinimumSameSitePolicy = SameSiteMode.None;
 });
 
+builder.Services.AddDbContext<IntexDatabaseContext>(options =>
+{
+    options.UseSqlite(builder.Configuration["ConnectionStrings:IntexConnection"]);
+});
+
+builder.Services.AddScoped<IIntexRepository, EFIntexRepository>(); 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -34,7 +44,6 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseCookiePolicy();
 
 app.UseRouting();
 

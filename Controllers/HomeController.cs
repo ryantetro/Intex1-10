@@ -1,21 +1,28 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Intex1_10.Models;
+using Microsoft.AspNetCore.Mvc.TagHelpers.Cache;
 
 namespace Intex1_10.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    private IIntexRepository _repo;
+    public HomeController(IIntexRepository temp)
     {
-        _logger = logger;
+        _repo = temp;
     }
 
     public IActionResult Index()
     {
-        return View();
+       var productData = _repo.Products
+           .OrderBy(x => x.Name)
+           .Take(6);
+           
+
+        // Pass the collection of products to the view
+        return View(productData);
+       
     }
 
     public IActionResult Privacy()

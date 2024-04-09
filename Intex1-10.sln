@@ -12,5 +12,6 @@ Global
 		{ADD1CE99-BD28-486B-98BC-AEA4B3F66B62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADD1CE99-BD28-486B-98BC-AEA4B3F66B62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADD1CE99-BD28-486B-98BC-AEA4B3F66B62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADD1CE99-BD28-486B-98BC-AEA4B3F66B62}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal
