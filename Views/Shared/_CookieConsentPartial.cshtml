@@ -8,28 +8,19 @@
 
 @if (showBannerFlag)    
 {    
-    <div id="cookieConsentdiv" class="cookie-consent">
+    <div id="cookieConsentdiv">
         <h3 class="display-6">Cookie Policy</h3>
-        <p>PLEASE ACCEPT OUR <a asp-page="/CookiePolicy">COOKIE POLICY</a>.</p> 
-        <button type="button" class="accept-cookie cookie-button" data-cookie-string="@cookieStr">    
+        <p>PLEASE ACCEPT OUR <a asp-area="" asp-controller="Home" asp-action="Privacy">PRIVACY POLICY</a>.</p> 
+        <button type="button" data-cookie-string="@cookieStr">    
             <span aria-hidden="true">Accept</span>    
-        </button>
-        <button type="button" class="decline-cookie cookie-button">    
-            <span aria-hidden="true">Decline</span>    
-        </button>  
+        </button>    
     </div>    
     <script type="text/javascript">    
         $(document).ready(function () {    
-            $(".cookie-consent .accept-cookie").bind("click", function () {    
-                document.cookie = $(".cookie-consent .accept-cookie").attr("data-cookie-string");    
-                $(".cookie-consent").hide();
-            });  
-
-            $(".cookie-consent .decline-cookie").bind("click", function () {    
-                // Redirect the user to a page explaining the consequences of declining cookies
-                window.location.href = "/decline-cookies";
+            $("#cookieConsentdiv button[data-cookie-string]").bind("click", function () {    
+                document.cookie = $("#cookieConsentdiv button").attr("data-cookie-string");    
+                $("#cookieConsentdiv").hide();
             });    
         });    
     </script>    
-} 
-
+}
