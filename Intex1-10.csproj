@@ -21,4 +21,50 @@
       <PackageReference Include="SQLite" Version="3.13.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="NewFile1.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\lib\qrcode\" />
+      <Folder Update="..\..\Downloads\davidshimjs-qrcodejs-04f46c6\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\Downloads\davidshimjs-qrcodejs-04f46c6\.gitignore">
+        <Link>wwwroot\lib\qrcode\davidshimjs-qrcodejs-04f46c6\.gitignore</Link>
+      </Content>
+      <Content Include="..\..\Downloads\davidshimjs-qrcodejs-04f46c6\bower.json">
+        <Link>wwwroot\lib\qrcode\davidshimjs-qrcodejs-04f46c6\bower.json</Link>
+      </Content>
+      <Content Include="..\..\Downloads\davidshimjs-qrcodejs-04f46c6\index-svg.html">
+        <Link>wwwroot\lib\qrcode\davidshimjs-qrcodejs-04f46c6\index-svg.html</Link>
+      </Content>
+      <Content Include="..\..\Downloads\davidshimjs-qrcodejs-04f46c6\index.html">
+        <Link>wwwroot\lib\qrcode\davidshimjs-qrcodejs-04f46c6\index.html</Link>
+      </Content>
+      <Content Include="..\..\Downloads\davidshimjs-qrcodejs-04f46c6\index.svg">
+        <Link>wwwroot\lib\qrcode\davidshimjs-qrcodejs-04f46c6\index.svg</Link>
+      </Content>
+      <Content Include="..\..\Downloads\davidshimjs-qrcodejs-04f46c6\jquery.min.js">
+        <Link>wwwroot\lib\qrcode\davidshimjs-qrcodejs-04f46c6\jquery.min.js</Link>
+      </Content>
+      <Content Include="..\..\Downloads\davidshimjs-qrcodejs-04f46c6\LICENSE">
+        <Link>wwwroot\lib\qrcode\davidshimjs-qrcodejs-04f46c6\LICENSE</Link>
+      </Content>
+      <Content Include="..\..\Downloads\davidshimjs-qrcodejs-04f46c6\qrcode.js">
+        <Link>wwwroot\lib\qrcode\davidshimjs-qrcodejs-04f46c6\qrcode.js</Link>
+      </Content>
+      <Content Include="..\..\Downloads\davidshimjs-qrcodejs-04f46c6\qrcode.min.js">
+        <Link>wwwroot\lib\qrcode\davidshimjs-qrcodejs-04f46c6\qrcode.min.js</Link>
+      </Content>
+      <Content Include="..\..\Downloads\davidshimjs-qrcodejs-04f46c6\README.md">
+        <Link>wwwroot\lib\qrcode\davidshimjs-qrcodejs-04f46c6\README.md</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
+    </ItemGroup>
+
 </Project>
