@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Intex1_10.Models;
+using Microsoft.AspNetCore.Mvc.TagHelpers.Cache;
 
 namespace Intex1_10.Controllers;
 
@@ -12,19 +13,26 @@ public class HomeController : Controller
         _repo = temp;
     }
 
-    [HttpGet]
     public IActionResult Index()
     {
-        // This query will be executed at the database when called
-        var test = _repo.Customers.FirstOrDefault(x => x.FirstName == "William");
+       var productData = _repo.Product
+           .OrderBy(x => x.Name)
+           .Take(6);
+           
 
-        // Ensure that 'test' is not null before using it
-        if (test == null)
-        {
-            // Handle the case when no customer is found
-            // Maybe redirect to another view or display a message
-        }
+        // Pass the collection of products to the view
+        return View(productData);
+       
+    }
 
-        return View(test);
+    public IActionResult Privacy()
+    {
+        return View();
+    }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }
