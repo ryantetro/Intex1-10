@@ -6,12 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<IntexDatabaseContext>(options =>
+builder.Services.AddDbContext<legoDatabaseContext>(options =>
 {
-    options.UseSqlite(builder.Configuration["ConnectionStrings:IntexConnection"]);
+    options.UseSqlite(builder.Configuration["ConnectionStrings:legoConnection"]);
 });
 
-builder.Services.AddScoped<IIntexRepository, EFIntexRepository>(); 
+builder.Services.AddScoped<ILegoRepository, EfLegoRepository>(); 
 
 var app = builder.Build();
 

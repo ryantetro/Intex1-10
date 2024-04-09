@@ -7,8 +7,8 @@ namespace Intex1_10.Controllers;
 
 public class HomeController : Controller
 {
-    private IIntexRepository _repo;
-    public HomeController(IIntexRepository temp)
+    private ILegoRepository _repo;
+    public HomeController(ILegoRepository temp)
     {
         _repo = temp;
     }
