@@ -4,8 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 using Intex1_10.Models;
 using Microsoft.EntityFrameworkCore;
+using Intex1_10.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("IdentityDataContextConnection") ?? throw new InvalidOperationException("Connection string 'IdentityDataContextConnection' not found.");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -31,6 +33,8 @@ builder.Services.AddDbContext<IntexDatabaseContext>(options =>
 {
     options.UseSqlite(builder.Configuration["ConnectionStrings:IntexConnection"]);
 });
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<IdentityDataContext>();
 
 builder.Services.AddScoped<IIntexRepository, EFIntexRepository>(); 
 
