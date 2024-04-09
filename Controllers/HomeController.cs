@@ -15,7 +15,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-       var productData = _repo.Product
+       var productData = _repo.Products
            .OrderBy(x => x.Name)
            .Take(6);
            

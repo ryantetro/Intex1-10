@@ -10,4 +10,5 @@ public class EFIntexRepository : IIntexRepository
     }
 
     public IQueryable<Customer> Customers => _context.Customers;
+    public IQueryable<Product> Products => _context.Products;
 }
