@@ -6,26 +6,25 @@ namespace Intex1_10.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    private IIntexRepository _repo;
+    public HomeController(IIntexRepository temp)
     {
-        _logger = logger;
+        _repo = temp;
     }
 
+    [HttpGet]
     public IActionResult Index()
     {
-        return View();
-    }
+        // This query will be executed at the database when called
+        var test = _repo.Customers.FirstOrDefault(x => x.FirstName == "William");
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+        // Ensure that 'test' is not null before using it
+        if (test == null)
+        {
+            // Handle the case when no customer is found
+            // Maybe redirect to another view or display a message
+        }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        return View(test);
     }
 }
